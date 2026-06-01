@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evenement Naam</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,800;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Samenwerking NEMO · HvA · Westpoort</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,800;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1a18;
-    --cream: #f5f2eb;
-    --accent: #c84b2f;
-    --gold: #b8972a;
+    --ink: #1c1c1a;
+    --cream: #f6f3ed;
+    --accent: #2a5c8f;
+    --accent2: #c0863a;
     --muted: #7a7870;
     --card: #ffffff;
-    --border: rgba(26,26,24,0.12);
+    --border: rgba(28,28,26,0.1);
+    --section-max: 900px;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -25,572 +25,411 @@
     background: var(--cream);
     color: var(--ink);
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.75;
   }
 
   /* NAV */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(245,242,235,0.92);
-    backdrop-filter: blur(12px);
+    background: rgba(246,243,237,0.95);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
     padding: 0 2rem;
     display: flex; align-items: center; justify-content: space-between;
-    height: 60px;
+    height: 58px; gap: 1.5rem;
   }
   .nav-logo {
     font-family: 'Fraunces', serif;
-    font-size: 1.2rem; font-weight: 600;
+    font-size: 1rem; font-weight: 600;
     text-decoration: none; color: var(--ink);
+    white-space: nowrap; flex-shrink: 0;
   }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links { display: flex; gap: 1.25rem; list-style: none; flex-shrink: 0; }
   .nav-links a {
     text-decoration: none; color: var(--muted);
-    font-size: 0.875rem; font-weight: 500;
-    transition: color 0.2s;
+    font-size: 0.82rem; font-weight: 400;
+    transition: color 0.2s; white-space: nowrap;
   }
   .nav-links a:hover { color: var(--ink); }
 
+  .nav-logos { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+  .nav-logo-slot {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; flex-shrink: 0;
+  }
+  .nav-logo-slot img { width: 100%; height: 100%; object-fit: contain; padding: 3px; }
+  .nav-divider { width: 1px; height: 18px; background: var(--border); }
+
   /* HERO */
   .hero {
-    min-height: 88vh;
-    display: grid; place-items: center;
+    min-height: 80vh;
+    display: flex; align-items: center; justify-content: center;
     text-align: center;
-    padding: 5rem 2rem 4rem;
+    padding: 6rem 2rem 5rem;
     position: relative; overflow: hidden;
   }
   .hero::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(184,151,42,0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(42,92,143,0.07) 0%, transparent 70%);
     pointer-events: none;
   }
-  .hero-label {
-    display: inline-block;
-    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--accent);
-    border: 1px solid var(--accent);
-    padding: 0.35em 1em; border-radius: 2em;
-    margin-bottom: 2rem;
-  }
+  .hero-inner { max-width: 720px; position: relative; }
   .hero h1 {
     font-family: 'Fraunces', serif;
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 800; line-height: 1.05;
-    max-width: 800px; margin: 0 auto 1.5rem;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.6rem, 6.5vw, 4.8rem);
+    font-weight: 800; line-height: 1.07;
+    letter-spacing: -0.025em; margin-bottom: 1.5rem;
+    color: var(--ink);
   }
-  .hero h1 em { font-style: italic; color: var(--accent); }
   .hero-sub {
-    font-size: 1.125rem; color: var(--muted);
-    max-width: 520px; margin: 0 auto 2.5rem;
+    font-size: 1.05rem; color: var(--muted);
+    max-width: 540px; margin: 0 auto 2.5rem;
   }
-  .hero-meta {
-    display: flex; gap: 2rem; justify-content: center;
-    flex-wrap: wrap; margin-bottom: 3rem;
-  }
-  .hero-meta span {
-    font-size: 0.875rem; color: var(--muted);
-    display: flex; align-items: center; gap: 0.4em;
-  }
-  .hero-meta strong { color: var(--ink); }
   .btn {
     display: inline-block;
     background: var(--ink); color: var(--cream);
-    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    text-decoration: none; font-size: 0.875rem; font-weight: 500;
     padding: 0.85em 2.2em; border-radius: 3em;
     transition: background 0.2s, transform 0.15s;
     border: none; cursor: pointer;
   }
   .btn:hover { background: var(--accent); transform: translateY(-1px); }
-  .btn-outline {
+  .btn-ghost {
     background: transparent; color: var(--ink);
-    border: 1.5px solid var(--ink); margin-left: 1rem;
+    border: 1.5px solid rgba(28,28,26,0.25); margin-left: 0.75rem;
   }
-  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+  .btn-ghost:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  .divider { border: none; border-top: 1px solid var(--border); }
 
   /* SECTIONS */
-  section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 0.75rem;
+  .section { padding: 5rem 2rem; max-width: var(--section-max); margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent2); margin-bottom: 0.6rem;
   }
   h2 {
     font-family: 'Fraunces', serif;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem);
     font-weight: 600; line-height: 1.15;
-    margin-bottom: 1.25rem; letter-spacing: -0.02em;
+    letter-spacing: -0.02em; margin-bottom: 1.25rem;
   }
-  .lead { font-size: 1.1rem; color: var(--muted); max-width: 600px; }
+  .lead { font-size: 1.05rem; color: var(--muted); max-width: 640px; margin-bottom: 2rem; }
+  p { margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
 
-  /* INFO GRID */
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem; margin-top: 3rem;
+  /* ORGANISATIES */
+  .org-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 2.5rem;
   }
-  .info-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px; padding: 1.75rem;
+  .org-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem 1.5rem;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center;
   }
-  .info-card-icon {
-    font-size: 1.5rem; margin-bottom: 1rem;
-  }
-  .info-card h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.15rem; font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  .info-card p { font-size: 0.9rem; color: var(--muted); }
-
-  /* IMAGE BLOCK */
-  .image-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem; margin-top: 3rem;
-  }
-  .image-block .img-tall {
-    grid-row: span 2;
-  }
-  .img-placeholder {
-    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc3 100%);
-    border-radius: 16px; overflow: hidden;
+  .org-logo-slot {
+    width: 90px; height: 90px;
     display: flex; align-items: center; justify-content: center;
-    color: var(--muted); font-size: 0.8rem; text-align: center;
-    padding: 1rem;
+    overflow: hidden;
   }
-  .img-placeholder.tall { min-height: 360px; }
-  .img-placeholder.short { min-height: 170px; }
-  .img-placeholder img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-  }
-  .img-replace-hint {
-    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    pointer-events: none;
-  }
-  .img-replace-hint span { font-size: 2rem; }
+  .org-logo-slot img { width: 100%; height: 100%; object-fit: contain; }
 
-  /* DIVIDER */
-  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+  /* PROSE */
+  .prose { font-size: 1rem; line-height: 1.85; color: var(--ink); }
+  .prose h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem; font-weight: 600;
+    margin: 2rem 0 0.6rem; letter-spacing: -0.01em;
+  }
+  .prose p { margin-bottom: 1.1rem; color: #3a3a38; }
+  .prose ul { margin: 0.5rem 0 1.1rem 1.5rem; }
+  .prose ul li { margin-bottom: 0.4rem; color: #3a3a38; font-size: 1rem; }
 
-  /* VRAGENLIJST */
-  .quiz-wrap { margin-top: 2.5rem; }
-  .question-block {
+  /* FOTO GRID */
+  .photo-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1rem; margin-top: 2.5rem;
+  }
+  .photo-grid img {
+    width: 100%; height: 240px;
+    object-fit: cover; border-radius: 14px; display: block;
+  }
+
+  /* INTERVIEW */
+  .interview-wrap {
+    display: grid; grid-template-columns: 1fr;
+    gap: 2rem; margin-top: 2rem;
+  }
+  .interview-block {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 16px; padding: 1.75rem;
-    margin-bottom: 1.25rem;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 14px 14px 0;
+    padding: 2rem;
+    font-size: 0.975rem; line-height: 1.85; color: #3a3a38;
   }
-  .question-block h3 {
+  .interview-block h3 {
     font-family: 'Fraunces', serif;
-    font-size: 1.05rem; font-weight: 600;
-    margin-bottom: 1rem;
+    font-size: 1.1rem; font-weight: 600;
+    margin: 1.5rem 0 0.5rem; color: var(--ink);
   }
-  .options { display: flex; flex-direction: column; gap: 0.6rem; }
-  .option-label {
-    display: flex; align-items: center; gap: 0.75rem;
-    padding: 0.65em 1em;
-    border: 1px solid var(--border);
-    border-radius: 8px; cursor: pointer;
-    font-size: 0.9rem; transition: border-color 0.15s, background 0.15s;
+  .interview-block h3:first-child { margin-top: 0; }
+  .interview-block p { margin-bottom: 1rem; }
+  .interview-block p:last-child { margin-bottom: 0; }
+  .interview-meta {
+    font-size: 0.82rem; color: var(--muted);
+    font-style: italic; margin-bottom: 1.25rem;
   }
-  .option-label:hover { border-color: var(--accent); background: rgba(200,75,47,0.03); }
-  .option-label input { accent-color: var(--accent); }
-  .quiz-submit {
-    margin-top: 1.75rem;
-    background: var(--accent); color: #fff;
-    border: none; padding: 0.85em 2.2em;
-    border-radius: 3em; font-size: 0.9rem; font-weight: 500;
-    cursor: pointer; transition: opacity 0.2s;
+
+  /* DEPOT */
+  .depot-section { padding: 5rem 2rem; max-width: var(--section-max); margin: 0 auto; }
+  .depot-intro { margin-bottom: 2rem; }
+  .depot-photos {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-top: 2rem;
   }
-  .quiz-submit:hover { opacity: 0.88; }
-  #quiz-result {
-    display: none; margin-top: 1.5rem;
-    background: #edf7ee; border: 1px solid #b6ddb8;
-    border-radius: 12px; padding: 1.2rem 1.5rem;
-    font-size: 0.95rem; color: #2d6e32;
+  .depot-photos img {
+    width: 100%; height: 280px;
+    object-fit: cover; border-radius: 14px; display: block;
+  }
+  .depot-link {
+    display: inline-block; margin-top: 1.25rem;
+    color: var(--accent); font-size: 0.9rem; font-weight: 500;
+    text-decoration: underline;
   }
 
   /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 4rem; margin-top: 2.5rem;
-    align-items: start;
+  .contact-wrap {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start; margin-top: 2.5rem;
   }
-  .contact-info h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem;
-  }
-  .contact-info p { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem; }
-  .contact-info a { color: var(--accent); text-decoration: none; }
-
-  .form-group { margin-bottom: 1.25rem; }
-  label {
-    display: block; font-size: 0.8rem; font-weight: 500;
-    letter-spacing: 0.04em; text-transform: uppercase;
-    margin-bottom: 0.4rem; color: var(--muted);
-  }
-  input[type=text], input[type=email], textarea, select {
-    width: 100%;
+  .contact-card {
+    background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 10px; padding: 0.75em 1em;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem; background: var(--card);
-    color: var(--ink); transition: border-color 0.2s;
-    outline: none;
+    border-radius: 16px; padding: 2rem;
   }
-  input:focus, textarea:focus, select:focus { border-color: var(--ink); }
-  textarea { resize: vertical; min-height: 120px; }
-  .form-submit {
-    width: 100%; padding: 0.9em;
-    background: var(--ink); color: var(--cream);
-    border: none; border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
+  .contact-card p { font-size: 0.95rem; color: #3a3a38; margin-bottom: 1rem; }
+  .contact-email {
+    display: inline-flex; align-items: center; gap: 0.5rem;
     font-size: 0.95rem; font-weight: 500;
-    cursor: pointer; transition: background 0.2s;
+    color: var(--accent); text-decoration: none;
+    margin-bottom: 1.5rem; display: block;
   }
-  .form-submit:hover { background: var(--accent); }
-  #form-success {
-    display: none; margin-top: 1rem;
-    background: #edf7ee; border: 1px solid #b6ddb8;
-    border-radius: 10px; padding: 1rem 1.25rem;
-    font-size: 0.9rem; color: #2d6e32; text-align: center;
-  }
-
-  /* QR SECTIE */
-  .qr-section {
-    background: var(--ink); color: var(--cream);
-    border-radius: 20px; padding: 3rem 2rem;
-    text-align: center; margin: 0 2rem 5rem;
-    max-width: 900px; margin-left: auto; margin-right: auto;
-  }
-  .qr-section .section-label { color: var(--gold); }
-  .qr-section h2 { color: var(--cream); margin-bottom: 0.75rem; }
-  .qr-section p { color: rgba(245,242,235,0.65); margin-bottom: 2rem; }
-  #qr-container {
+  .contact-email:hover { text-decoration: underline; }
+  .btn-mail {
     display: inline-block;
-    background: #fff; border-radius: 16px;
-    padding: 1.25rem; margin-bottom: 1.5rem;
+    background: var(--ink); color: var(--cream);
+    text-decoration: none; font-size: 0.875rem; font-weight: 500;
+    padding: 0.85em 2em; border-radius: 3em;
+    transition: background 0.2s, transform 0.15s;
   }
-  .qr-url-input-row {
-    display: flex; gap: 0.75rem; max-width: 480px;
-    margin: 0 auto 1rem; flex-wrap: wrap;
-    justify-content: center;
-  }
-  .qr-url-input-row input {
-    flex: 1; min-width: 240px;
-    border: 1px solid rgba(245,242,235,0.2);
-    border-radius: 8px; padding: 0.65em 1em;
-    background: rgba(255,255,255,0.08);
-    color: var(--cream); font-size: 0.875rem;
-  }
-  .qr-url-input-row input::placeholder { color: rgba(245,242,235,0.35); }
-  .qr-url-input-row button {
-    padding: 0.65em 1.5em;
-    background: var(--accent); color: #fff;
-    border: none; border-radius: 8px;
-    font-size: 0.875rem; font-weight: 500;
-    cursor: pointer;
-  }
-  .qr-download {
-    display: inline-block; margin-top: 0.5rem;
-    font-size: 0.8rem; color: rgba(245,242,235,0.5);
-    text-decoration: underline; cursor: pointer;
-    background: none; border: none;
+  .btn-mail:hover { background: var(--accent); transform: translateY(-1px); }
+  .contact-photo img {
+    width: 100%; border-radius: 14px;
+    object-fit: cover; aspect-ratio: 4/3;
   }
 
-  /* FOOTER */
   footer {
     text-align: center; padding: 2.5rem 2rem;
     border-top: 1px solid var(--border);
     font-size: 0.8rem; color: var(--muted);
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     .nav-links { display: none; }
-    .image-block { grid-template-columns: 1fr; }
-    .image-block .img-tall { grid-row: span 1; }
-    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .hero-meta { gap: 1rem; }
+    .nav-logos { display: none; }
+    .org-grid { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .photo-grid { grid-template-columns: 1fr; }
+    .depot-photos { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="#">Evenement</a>
+  <a class="nav-logo" href="#">NEMO · HvA · Westpoort</a>
   <ul class="nav-links">
-    <li><a href="#info">Info</a></li>
-    <li><a href="#programma">Programma</a></li>
-    <li><a href="#vragenlijst">Aanmelden</a></li>
+    <li><a href="#info">Over ons</a></li>
+    <li><a href="#interview">Interview</a></li>
+    <li><a href="#depot">NEMO Depot</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-logos">
+    <div class="nav-logo-slot"><img src="logo-nemo.png" alt="NEMO Science Museum"></div>
+    <div class="nav-divider"></div>
+    <div class="nav-logo-slot"><img src="logo-hva.png" alt="HvA Techniek"></div>
+    <div class="nav-divider"></div>
+    <div class="nav-logo-slot"><img src="logo-mcw.png" alt="MBO College Westpoort"></div>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div>
-    <span class="hero-label">✦ Zaterdag 14 september 2025</span>
-    <h1>Jouw <em>Evenement</em><br>Naam Hier</h1>
-    <p class="hero-sub">Een korte, uitnodigende beschrijving van het evenement. Vertel in één of twee zinnen waar het om gaat en wie het is voor.</p>
-    <div class="hero-meta">
-      <span>📍 <strong>Locatienaam, Amsterdam</strong></span>
-      <span>🕑 <strong>14:00 – 20:00</strong></span>
-      <span>👥 <strong>Max. 80 personen</strong></span>
-    </div>
-    <a href="#vragenlijst" class="btn">Aanmelden</a>
-    <a href="#info" class="btn btn-outline">Meer info</a>
+  <div class="hero-inner">
+    <h1>Samen bouwen aan een leerecosysteem voor techniek</h1>
+    <p class="hero-sub">Denk mee in de nieuwe samenwerking tussen NEMO, HvA Techniek en MBO College Westpoort.</p>
+    <a href="#info" class="btn">Lees meer</a>
+    <a href="#contact" class="btn btn-ghost">Denk mee</a>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- INFO -->
-<section id="info">
-  <p class="section-label">Over het evenement</p>
-  <h2>Wat kun je verwachten?</h2>
-  <p class="lead">Voeg hier een langere introductietekst toe. Beschrijf de sfeer, het doel, en wat bezoekers kunnen beleven.</p>
+<!-- INFO + ORGANISATIES -->
+<section class="section" id="info">
+  <p class="section-eyebrow">Over de samenwerking</p>
+  <h2>Wie zijn wij?</h2>
+  <p class="lead">NEMO, de Hogeschool van Amsterdam Techniek en MBO College Westpoort slaan de handen ineen.</p>
 
-  <div class="info-grid">
-    <div class="info-card">
-      <div class="info-card-icon">🎤</div>
-      <h3>Sprekers & Lezingen</h3>
-      <p>Inspirerende sprekers delen hun verhalen en inzichten over het thema van het evenement.</p>
+  <div class="org-grid">
+    <div class="org-card">
+      <div class="org-logo-slot"><img src="logo-nemo.png" alt="NEMO Science Museum"></div>
     </div>
-    <div class="info-card">
-      <div class="info-card-icon">🤝</div>
-      <h3>Netwerken</h3>
-      <p>Ruimte voor ontmoetingen, gesprekken en nieuwe verbindingen met gelijkgestemden.</p>
+    <div class="org-card">
+      <div class="org-logo-slot"><img src="logo-hva.png" alt="HvA Techniek"></div>
     </div>
-    <div class="info-card">
-      <div class="info-card-icon">🍽️</div>
-      <h3>Eten & Drinken</h3>
-      <p>Verzorgde catering met lokale producten. Vegetarisch en veganistische opties beschikbaar.</p>
+    <div class="org-card">
+      <div class="org-logo-slot"><img src="logo-mcw.png" alt="MBO College Westpoort"></div>
     </div>
   </div>
 
-  <div class="image-block" style="margin-top: 3rem;">
-    <div class="img-placeholder tall img-tall">
-      <!-- Vervang door: <img src="jouw-foto.jpg" alt="Beschrijving"> -->
-      <div class="img-replace-hint"><span>🖼️</span>Voeg hier een afbeelding toe<br><small>img src="foto.jpg"</small></div>
-    </div>
-    <div class="img-placeholder short">
-      <div class="img-replace-hint"><span>📸</span>Foto 2</div>
-    </div>
-    <div class="img-placeholder short">
-      <div class="img-replace-hint"><span>📸</span>Foto 3</div>
+  <div class="prose" style="margin-top: 3.5rem;">
+    <h3>Over de samenwerking</h3>
+    <p>NEMO, de Hogeschool van Amsterdam Techniek en MBO College Westpoort slaan de handen ineen. We bouwen aan een samenwerking waarin scholieren, studenten, docenten, bezoekers en professionals op verschillende manieren en momenten in aanraking komen met techniek en technologie.</p>
+    <p>Dit jaar voeren we een pilot uit. We onderzoeken welke activiteiten werken, voor wie, en hoe.</p>
+
+    <h3>Waarom doen we dit?</h3>
+    <p>We geloven dat leren over techniek en technologie sterker wordt wanneer onderwijs, praktijk en maatschappelijke context samenkomen.</p>
+    <p>NEMO wil zijn doelgroep verbreden door interactie met studenten en jongvolwassenen en positioneert zich als clubhuis op het snijvlak van techniek en maatschappij. NEMO biedt een inspirerende omgeving waar techniek zichtbaar en beleefbaar is. Een plek waar studenten techniek creatief, praktisch en verbonden met de echte wereld kunnen ervaren. En een plek waar bezoekers kennis kunnen maken met studenten aan het werk.</p>
+    <p>Voor HvA Techniek en MBO College Westpoort biedt dit een waardevolle aanvulling op het formele curriculum. We willen bestaande onderwijsactiviteiten versterken. Niet iets extra's creëren, maar aansluiten op wat er al gebeurt binnen opleidingen, projecten en vakken.</p>
+    <p>Samen creëren we een leeromgeving waar jongeren op school én daarbuiten in aanraking komen met techniek &amp; technologie, als impuls voor talentontwikkeling en carrièreperspectief.</p>
+
+    <h3>Wat willen we bereiken?</h3>
+    <p>In het pilotjaar 2026/2027 onderzoeken we welke activiteiten waardevol, haalbaar en impactvol zijn voor leerlingen, studenten, docenten en professionals. We richten ons daarbij op drie pijlers:</p>
+    <ul>
+      <li><strong>Informele leeractiviteiten en bijeenkomsten</strong> die instroom van scholieren, studenten en/of zij-instromers genereren in het MBO en/of HBO.</li>
+      <li><strong>(In)formele leeractiviteiten en bijeenkomsten</strong> voor MBO en HBO studenten.</li>
+      <li><strong>Kennisbijeenkomsten</strong> voor MBO en HBO docenten en professionals uit het bedrijfsleven.</li>
+    </ul>
+
+    <h3>Waar kun je aan denken?</h3>
+    <p><em>Zomaar een greep uit de ideeën waar je aan kunt denken:</em></p>
+    <ul>
+      <li>Een project of ontwerpopdrachten gekoppeld aan de exposities of bedrijfsvoering van NEMO</li>
+      <li>Workshops voor studenten</li>
+      <li>Gezamenlijke event(s) voor studenten, docenten en professionals</li>
+      <li>Kennisdeling van bijvoorbeeld onderzoek, denk aan kennisbijeenkomsten bij NEMO</li>
+      <li>Activiteiten gericht op instroom of oriëntatie</li>
+      <li>Verbinding en samenwerking met bedrijfsleven en partners</li>
+    </ul>
+  </div>
+
+  <div class="photo-grid">
+    <img src="foto1.png" alt="Werkgroep bijeenkomst">
+    <img src="foto2.png" alt="Laser experiment">
+    <img src="foto3.png" alt="Event op het plein">
+    <img src="foto4.png" alt="Museum activiteit">
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- INTERVIEW -->
+<section class="section" id="interview">
+  <p class="section-eyebrow">Interview</p>
+  <h2>Aan het woord</h2>
+  <p class="lead">Nieuwe samenwerking van start tussen Westpoort, NEMO en HvA.</p>
+
+  <div class="interview-wrap">
+    <div class="interview-block">
+      <p class="interview-meta">Interview met Isabel van Esch, projectleider, door Isabel Los (HvA) · 10-02-2026</p>
+
+      <p>Techniekonderwijs mag best wat speelser. Dat is niet zomaar een gedachte, maar het vertrekpunt van een nieuwe samenwerking tussen NEMO Science Museum, de Hogeschool van Amsterdam en MBO College Westpoort. Geen extra project dat 'erbij' komt, maar een mogelijkheid om te experimenteren en onderzoeken hoe informeel en formeel leren elkaar versterken.</p>
+
+      <p>Projectleider Isabel van Esch is vorige week gestart bij NEMO en brengt een opvallende combinatie met zich mee: een achtergrond in psychologie, ervaring in het publieke domein én een karakter dat niet graag stilzit. "Ik heb wel duizend hobby's", zegt ze lachend. "Surfen is mijn favoriet, maar ik ben ook graag creatief bezig. Bijvoorbeeld met Japans houtbewerken, dat is een vorm van meubels maken. Iets bouwen, testen, opnieuw proberen: eigenlijk is het een perfect voorbeeld van informeel leren."</p>
+
+      <h3>Spelen als serieuze strategie</h3>
+      <p>"Informeel leren (leren door te doen), gaat vaak sneller en speelser", zegt Isabel. "Het onderwijs is van nature formeler georganiseerd. Met structuur, toetsing en diploma's. De kracht zit hem in de combinatie."</p>
+      <p>De ambitie? Een leerecosysteem creëren waarin aanstormend talent op verschillende plekken in aanraking komt met techniek en technologie. Waar studenten prototypes ontwikkelen die misschien wel worden getest tussen museumbezoekers. Waar inspiratie niet alleen in een leslokaal ontstaat, maar ook op de museumvloer.</p>
+
+      <h3>Versterken wat er al is</h3>
+      <p>Een belangrijk uitgangspunt: het moet geen extra belasting zijn voor docenten of teams, maar aanvullen op waar we in het onderwijs al mee bezig zijn. "Er is al genoeg druk", zegt Isabel nuchter. "We kijken juist waar we kunnen aansluiten bij wat er al gebeurt. Waar zit energie? Waar liggen kansen? En hoe kunnen we dat versterken?"</p>
+      <p>Dat kan in verschillende vormen. Hoe precies, dat moet de komende tijd onderzocht worden. Er komen ideeën voorbij zoals een challenge die aansluit op het curriculum, een inspiratiemoment bij NEMO of het verder uitbouwen van bestaande pilots zoals bij het Sensorlab van de Hogeschool van Amsterdam. Ook wordt er gekeken naar of en hoe het bedrijfsleven kan aanhaken.</p>
+      <p>"Het ligt nog niet vast", benadrukt Isabel. "Ik ben net begonnen. De komende periode staat vooral in het teken van ophalen, luisteren en ontdekken waar het echt kan landen. Wat past bij de opleidingen? Waar zit ruimte? En waar wordt het beter van?"</p>
+
+      <h3>Leren door te doen</h3>
+      <p>NEMO is een grote speelplaats, perfect om in aanraking te komen met onderwijs en een andere manier van leren. "Je hoopt dat het voelt als een creatieve broedplaats", zegt Isabel. "Dat studenten denken: dit was echt leuk om te doen. En dat docenten ervaren dat het hen juist helpt."</p>
+      <p>De komende maanden staan in het teken van gesprekken voeren, kansen in kaart brengen en bouwen aan een langdurige samenwerking tussen NEMO, de HvA en het ROC. Of zoals Isabel het zelf samenvat: "Het is gewoon heel vet dat we dit samen kunnen doen. En ik kom graag langs om te kijken waar het kan werken."</p>
+      <p>We houden jullie op de hoogte van deze nieuwe samenwerking. Eén ding is zeker: techniekonderwijs krijgt er een speelse impuls bij.</p>
     </div>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- PROGRAMMA -->
-<section id="programma">
-  <p class="section-label">Planning</p>
-  <h2>Programma</h2>
-  <p class="lead">Bekijk het programma voor de dag en plan je bezoek.</p>
-
-  <div style="margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1px;">
-    <!-- Programma item -->
-    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
-      <span style="font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--accent);">14:00</span>
-      <div><strong>Deuren open</strong><p style="font-size: 0.875rem; color: var(--muted); margin-top: 0.25rem;">Ontvangst met koffie en thee</p></div>
-    </div>
-    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
-      <span style="font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--accent);">15:00</span>
-      <div><strong>Openingsprogramma</strong><p style="font-size: 0.875rem; color: var(--muted); margin-top: 0.25rem;">Welkomstwoord en eerste sessie</p></div>
-    </div>
-    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
-      <span style="font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--accent);">16:30</span>
-      <div><strong>Pauze & Netwerken</strong><p style="font-size: 0.875rem; color: var(--muted); margin-top: 0.25rem;">30 minuten vrije tijd</p></div>
-    </div>
-    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border);">
-      <span style="font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--accent);">17:00</span>
-      <div><strong>Middagprogramma</strong><p style="font-size: 0.875rem; color: var(--muted); margin-top: 0.25rem;">Workshops en presentaties</p></div>
-    </div>
-    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding: 1.25rem 0;">
-      <span style="font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--accent);">19:00</span>
-      <div><strong>Borrel & Afsluiting</strong><p style="font-size: 0.875rem; color: var(--muted); margin-top: 0.25rem;">Informeel samenzijn tot 20:00</p></div>
-    </div>
+<!-- NEMO DEPOT -->
+<section class="depot-section" id="depot">
+  <p class="section-eyebrow">Rondleiding</p>
+  <h2>Het NEMO Depot</h2>
+  <div class="depot-intro">
+    <p>NEMO Depot biedt een grote collectie met stukken uit de technologische ontwikkeling. De collectie bestaat uit vier onderdelen: 'Techniek in en rond het huis', 'Energie opwekken en opslaan', 'Installatietechniek' en 'Verlichting'.</p>
+    <p>Om een indruk van het depot te geven, en de mogelijkheden daarvan, organiseren we graag een rondleiding voor geïnteresseerde docenten en medewerkers!</p>
+    <p>Heb je daar interesse in? Laat dit ook weten via het contactformulier.</p>
+    <a class="depot-link" href="https://www.nemosciencemuseum.nl/collectie" target="_blank">Lees hier meer over het Depot: nemosciencemuseum.nl/collectie →</a>
   </div>
-</section>
-
-<hr class="divider">
-
-<!-- VRAGENLIJST -->
-<section id="vragenlijst">
-  <p class="section-label">Aanmelden</p>
-  <h2>Korte vragenlijst</h2>
-  <p class="lead">Help ons het programma goed afstemmen. Vul onderstaande vragen in bij je aanmelding.</p>
-
-  <div class="quiz-wrap">
-    <form id="quiz-form">
-      <div class="question-block">
-        <h3>1. Hoe heb je over dit evenement gehoord?</h3>
-        <div class="options">
-          <label class="option-label"><input type="radio" name="q1" value="social"> Via sociale media</label>
-          <label class="option-label"><input type="radio" name="q1" value="vriend"> Via een vriend of collega</label>
-          <label class="option-label"><input type="radio" name="q1" value="email"> Via een nieuwsbrief</label>
-          <label class="option-label"><input type="radio" name="q1" value="anders"> Anders</label>
-        </div>
-      </div>
-
-      <div class="question-block">
-        <h3>2. Wat trekt jou het meest aan dit evenement?</h3>
-        <div class="options">
-          <label class="option-label"><input type="radio" name="q2" value="sprekers"> De sprekers en inhoud</label>
-          <label class="option-label"><input type="radio" name="q2" value="netwerk"> Netwerkmogelijkheden</label>
-          <label class="option-label"><input type="radio" name="q2" value="sfeer"> De sfeer en het concept</label>
-          <label class="option-label"><input type="radio" name="q2" value="alles"> Alles samen</label>
-        </div>
-      </div>
-
-      <div class="question-block">
-        <h3>3. Heb je dieetwensen of bijzondere behoeften?</h3>
-        <div class="options">
-          <label class="option-label"><input type="radio" name="q3" value="geen"> Geen</label>
-          <label class="option-label"><input type="radio" name="q3" value="vegetarisch"> Vegetarisch</label>
-          <label class="option-label"><input type="radio" name="q3" value="veganistisch"> Veganistisch</label>
-          <label class="option-label"><input type="radio" name="q3" value="anders"> Anders (vermeld in contactformulier)</label>
-        </div>
-      </div>
-
-      <button type="button" class="quiz-submit" onclick="submitQuiz()">Antwoorden opslaan ↓</button>
-    </form>
-    <div id="quiz-result">✓ Bedankt! Vul hieronder het contactformulier in om je aanmelding te voltooien.</div>
+  <div class="depot-photos">
+    <img src="foto-depot1.png" alt="NEMO Depot collectie">
+    <img src="foto-depot2.png" alt="NEMO Depot object">
   </div>
 </section>
 
 <hr class="divider">
 
 <!-- CONTACT -->
-<section id="contact">
-  <p class="section-label">Contact & Aanmelding</p>
-  <h2>Neem contact op</h2>
+<section class="section" id="contact">
+  <p class="section-eyebrow">Contact</p>
+  <h2>Denk mee</h2>
 
-  <div class="contact-grid">
-    <div class="contact-info">
-      <h3>Informatie</h3>
-      <p>📍 Locatienaam<br>Straatnaam 12<br>1234 AB Amsterdam</p>
-      <p style="margin-top: 1rem;">📧 <a href="mailto:info@evenement.nl">info@evenement.nl</a></p>
-      <p>📞 <a href="tel:+31201234567">020 – 123 45 67</a></p>
-      <p style="margin-top: 1.5rem; font-size: 0.85rem;">Vragen? We reageren binnen 2 werkdagen.</p>
+  <div class="contact-wrap">
+    <div class="contact-card">
+      <p>Jouw kennis en ideeën zijn belangrijk! Jouw input helpt ons bij het vormgeven van de pilot en de verdere ontwikkeling van een duurzame samenwerking tussen NEMO, HvA en MBO College Westpoort.</p>
+      <p>Heb je vragen over de samenwerking? Heb je meer ideeën? Of lijkt het je leuk om samen verder te brainstormen over deze samenwerking? Dan komen we graag in contact!</p>
+      <a class="contact-email" href="mailto:vanesch@e-nemo.nl">📧 vanesch@e-nemo.nl</a>
+      <a class="btn-mail" href="mailto:vanesch@e-nemo.nl">Stuur een mail</a>
+
+      <div style="margin-top: 2rem;" class="contact-photo">
+        <img src="foto-isabel.png" alt="Isabel van Esch, projectleider">
+      </div>
     </div>
 
-    <div>
-      <form id="contact-form">
-        <div class="form-group">
-          <label for="naam">Naam</label>
-          <input type="text" id="naam" placeholder="Jouw volledige naam" required>
-        </div>
-        <div class="form-group">
-          <label for="email">E-mailadres</label>
-          <input type="email" id="email" placeholder="naam@voorbeeld.nl" required>
-        </div>
-        <div class="form-group">
-          <label for="onderwerp">Onderwerp</label>
-          <select id="onderwerp">
-            <option value="">Kies een onderwerp</option>
-            <option value="aanmelding">Aanmelding evenement</option>
-            <option value="vraag">Algemene vraag</option>
-            <option value="samenwerking">Samenwerking / sponsoring</option>
-            <option value="anders">Anders</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="bericht">Bericht</label>
-          <textarea id="bericht" placeholder="Schrijf hier je bericht of aanvullende vragen..."></textarea>
-        </div>
-        <button type="button" class="form-submit" onclick="submitForm()">Verstuur bericht</button>
-      </form>
-      <div id="form-success">✓ Bericht ontvangen! We nemen zo snel mogelijk contact met je op.</div>
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem;">
+        <p class="section-eyebrow" style="margin-bottom: 0.5rem;">Rondleiding</p>
+        <p style="font-size: 0.95rem; color: #3a3a38;">Interesse in een rondleiding door het NEMO Depot? Vermeld dit in je mail, dan plannen we iets in.</p>
+      </div>
+      <div style="background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem;">
+        <p class="section-eyebrow" style="margin-bottom: 0.5rem;">Samenwerking</p>
+        <p style="font-size: 0.95rem; color: #3a3a38;">Wil je meedenken over de pilot of zijn er activiteiten die aansluiten bij jouw opleiding of organisatie? We horen het graag.</p>
+      </div>
+      <div style="background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem;">
+        <p class="section-eyebrow" style="margin-bottom: 0.5rem;">Ideeën</p>
+        <p style="font-size: 0.95rem; color: #3a3a38;">Heb je een concreet idee voor een activiteit, workshop of samenwerking? Deel het gerust — geen idee is te klein.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- QR CODE -->
-<div class="qr-section">
-  <p class="section-label">Delen</p>
-  <h2>Scan of deel de link</h2>
-  <p>Vul de URL van jouw website in om een QR-code te genereren die je kunt printen of delen.</p>
-  <div class="qr-url-input-row">
-    <input type="text" id="qr-url-input" placeholder="https://jouwsite.nl" value="https://jouwsite.nl">
-    <button onclick="generateQR()">Genereer QR</button>
-  </div>
-  <div id="qr-container">
-    <canvas id="qr-canvas"></canvas>
-  </div>
-  <br>
-  <button class="qr-download" onclick="downloadQR()">↓ Download QR-code als PNG</button>
-</div>
-
 <footer>
-  <p>© 2025 Evenement Naam · <a href="#contact" style="color: var(--muted);">Contact</a></p>
+  <p>© 2025 NEMO Science Museum · HvA Techniek · MBO College Westpoort</p>
 </footer>
-
-<!-- QR CODE LIBRARY -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script>
-  var qrInstance = null;
-
-  function generateQR() {
-    var url = document.getElementById('qr-url-input').value.trim();
-    if (!url) return;
-    var container = document.getElementById('qr-container');
-    container.innerHTML = '<canvas id="qr-canvas"></canvas>';
-    try {
-      qrInstance = new QRCode(container, {
-        text: url,
-        width: 200,
-        height: 200,
-        colorDark: '#1a1a18',
-        colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.H
-      });
-    } catch(e) {
-      container.innerHTML = '<p style="color:#c84b2f;font-size:0.8rem;padding:1rem;">Kon QR niet aanmaken. Probeer een andere URL.</p>';
-    }
-  }
-
-  function downloadQR() {
-    var canvas = document.querySelector('#qr-container canvas');
-    if (!canvas) { alert('Genereer eerst een QR-code.'); return; }
-    var link = document.createElement('a');
-    link.download = 'qr-code.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  }
-
-  function submitQuiz() {
-    var form = document.getElementById('quiz-form');
-    var allAnswered = true;
-    var groups = ['q1','q2','q3'];
-    groups.forEach(function(g) {
-      if (!form.querySelector('input[name="'+g+'"]:checked')) allAnswered = false;
-    });
-    if (!allAnswered) { alert('Beantwoord alle vragen voor je verder gaat.'); return; }
-    document.getElementById('quiz-result').style.display = 'block';
-    document.getElementById('quiz-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  function submitForm() {
-    var naam = document.getElementById('naam').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var bericht = document.getElementById('bericht').value.trim();
-    if (!naam || !email) { alert('Vul minimaal je naam en e-mailadres in.'); return; }
-    document.getElementById('contact-form').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-  }
-
-  window.addEventListener('load', function() {
-    generateQR();
-  });
-</script>
 
 </body>
 </html>
